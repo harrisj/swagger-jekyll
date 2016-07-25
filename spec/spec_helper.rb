@@ -1,12 +1,9 @@
-require 'jekyll'
-require_relative '../lib/swagger_jekyll'
+require 'bundler/setup'
+Bundler.setup
 
-ENV['RACK_ENV'] ||= 'test'
+require 'jekyll'
+require 'swagger_jekyll'
 
 RSpec.configure do |config|
-  config.mock_with :rspec do |mocks|
-    mocks.verify_partial_doubles = true
-  end
-
-  config.order = :random
+  # some (optional) config here
 end

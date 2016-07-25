@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Schema::Number do
+describe SwaggerJekyll::Schema::Number do
   describe 'display_type' do
     it 'should just be the display type' do
       s = SwaggerJekyll::Schema::Number.new('foo', {'type' => 'integer'}, nil)

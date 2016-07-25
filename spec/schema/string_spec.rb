@@ -16,22 +16,22 @@ describe SwaggerJekyll::Schema::String do
   describe 'example' do
     it 'should return a basic string if there is no format' do
       s = SwaggerJekyll::Schema::String.new('foo', {'type' => 'string'}, nil)
-      expect(s.example).to eq('example')
+      expect(s.example).to eq('')
     end
 
     it 'should return a sample date-time' do
       s = SwaggerJekyll::Schema::String.new('foo', {'type' => 'string', 'format' => 'date-time'}, nil)
-      expect(s.example).to eq('2016-01-01T13:00:00Z')
+      expect(s.example).to eq('"2016-01-01T13:00:00Z"')
     end
 
     it 'should return a sample email' do
       s = SwaggerJekyll::Schema::String.new('foo', {'type' => 'string', 'format' => 'email'}, nil)
-      expect(s.example).to eq('user@example.com')
+      expect(s.example).to eq('"user@example.com"')
     end
 
     it 'should return a markdown example' do
       s = SwaggerJekyll::Schema::String.new('foo', {'type' => 'string', 'format' => 'markdown'}, nil)
-      expect(s.example).to eq('A **markdown** string')
+      expect(s.example).to eq('"A **markdown** string"')
     end
   end
 end

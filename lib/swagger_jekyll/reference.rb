@@ -17,8 +17,10 @@ module SwaggerJekyll
       }
     end
 
-    def name
-      @name || ''
+    %w(name title description summary).each do |field|
+      define_method(field) do
+        dereference.send(field)
+      end
     end
 
     def ref
@@ -26,10 +28,14 @@ module SwaggerJekyll
     end
 
     def dereference
-      pointer = Hana::Pointer.new(ref)
-      target = pointer.eval(@specification.json)
-      raise "Unable to dereference #{ref}" if target.nil?
-      Schema.factory(@name, target, @specification)
+      if @_dereferenced.nil?
+        pointer = Hana::Pointer.new(ref)
+        target = pointer.eval(@specification.json)
+        raise "Unable to dereference #{ref}" if target.nil?
+        @_dereferenced = Schema.factory(@name, target, @specification)
+      end
+
+      @_dereferenced
     end
 
     def properties

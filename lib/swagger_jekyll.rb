@@ -1,8 +1,18 @@
 require 'json'
 require 'open-uri'
 
-Dir[File.join(File.dirname(__FILE__), 'swagger_jekyll')].each {|file| require file }
-Dir[File.join(File.dirname(__FILE__), 'swagger_jekyll', 'schema')].each {|file| require file }
+require 'swagger_jekyll/path'
+require 'swagger_jekyll/reference'
+require 'swagger_jekyll/response'
+require 'swagger_jekyll/specification'
+require 'swagger_jekyll/schema'
+require 'swagger_jekyll/verb'
+require 'swagger_jekyll/schema/all_of'
+require 'swagger_jekyll/schema/any_of'
+require 'swagger_jekyll/schema/array'
+require 'swagger_jekyll/schema/number'
+require 'swagger_jekyll/schema/object'
+require 'swagger_jekyll/schema/string'
 
 # taken from 18F/Jekyll_get
 module SwaggerJekyll
@@ -19,22 +29,16 @@ module SwaggerJekyll
         config = [config]
       end
       config.each do |d|
-        begin
-          data_key = d['id'] || 'swagger'
-          source = JSON.load(open(d['json']))
-          site.data[data_key] = Specification.new(source)
+        data_key = d['id'] || 'swagger'
+        source = JSON.load(open(d['json']))
+        site.data[data_key] = SwaggerJekyll::Specification.new(source)
 
-          raise site.data.inspect
-
-          if d['cache']
-            data_source = (site.config['data_source'] || '_data')
-            path = "#{data_source}/#{d['data']}.json"
-            open(path, 'wb') do |file|
-              file << JSON.generate(site.data[d['data']])
-            end
+        if d['cache']
+          data_source = (site.config['data_source'] || '_data')
+          path = "#{data_source}/#{d['data']}.json"
+          open(path, 'wb') do |file|
+            file << JSON.generate(site.data[d['data']])
           end
-        rescue
-          next
         end
       end
     end

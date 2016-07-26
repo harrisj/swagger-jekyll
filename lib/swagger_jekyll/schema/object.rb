@@ -8,16 +8,20 @@ module SwaggerJekyll
       properties_hash.values
     end
 
+    def property(key)
+      properties_hash[key]
+    end
+
     def display_type
-      if properties.length < 3
-        '{' + properties.map {|p| '"' + p.name + '": ' + p.display_type}.join(', ') + '}'
+      if properties.length > 0 && properties.length < 3
+        "<#{name+' ' unless name.nil?}{" + properties.map {|p| '"' + p.name + '": ' + p.display_type}.join(', ') + '}>'
       else
         "<#{name} object>"
       end
     end
 
     def title
-      name
+      hash['title']
     end
 
     def description
@@ -27,6 +31,8 @@ module SwaggerJekyll
     def example
       ''
     end
+
+    private
 
     def properties_hash
       if @_properties.nil?

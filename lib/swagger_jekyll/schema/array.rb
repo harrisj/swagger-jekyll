@@ -1,11 +1,7 @@
 module SwaggerJekyll
   class Schema::Array < SwaggerJekyll::Schema
     def display_type
-      "array of #{element_type.display_type}"
-    end
-
-    def description
-      element_type.description
+      "<#{element_type.display_type}>[] array"
     end
 
     def element_type

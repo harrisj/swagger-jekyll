@@ -20,6 +20,26 @@ module SwaggerJekyll
       }
     end
 
+    def paths
+      paths_hash.values
+    end
+
+    def path(name)
+      paths_hash[name]
+    end
+
+    def definition(name)
+      definitions_hash[name]
+    end
+
+    def definitions
+      definitions_hash.values
+    end
+
+    def inspect
+      "<<specification>>"
+    end
+
     private
 
     def paths_hash
@@ -33,10 +53,6 @@ module SwaggerJekyll
       @_paths_hash
     end
 
-    def paths
-      paths_hash.values
-    end
-
     def definitions_hash
       if @_definitions_hash.nil?
         @_definitions_hash = {}
@@ -47,10 +63,6 @@ module SwaggerJekyll
       end
 
       @_definitions_hash
-    end
-
-    def definitions
-      definitions_hash.values
     end
   end
 end

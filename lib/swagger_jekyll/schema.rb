@@ -5,7 +5,7 @@ module SwaggerJekyll
         'name' => name,
         'title' => title,
         'description' => description,
-        'display_type' => display_type,
+        'compact_type' => compact_type,
         'example' => example,
         'properties' => properties
       }
@@ -27,7 +27,7 @@ module SwaggerJekyll
       end
     end
 
-    def display_type
+    def compact_type
       type
     end
 

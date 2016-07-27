@@ -1,6 +1,6 @@
 module SwaggerJekyll
   class Schema::String < Schema
-    def display_type
+    def compact_type
       out = "string"
       out += " (#{format})" if format
       out

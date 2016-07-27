@@ -12,9 +12,9 @@ module SwaggerJekyll
       properties_hash[key]
     end
 
-    def display_type
+    def compact_type
       if properties.length > 0 && properties.length < 3
-        "<#{name+' ' unless name.nil?}{" + properties.map {|p| '"' + p.name + '": ' + p.display_type}.join(', ') + '}>'
+        "<#{name+' ' unless name.nil?}{" + properties.map {|p| '"' + p.name + '": ' + p.compact_type}.join(', ') + '}>'
       else
         "<#{name} object>"
       end

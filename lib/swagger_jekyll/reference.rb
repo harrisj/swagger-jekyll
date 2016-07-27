@@ -15,7 +15,7 @@ module SwaggerJekyll
     def to_liquid
       {
         'name' => name,
-        'display_type' => display_type
+        'compact_type' => compact_type
       }
     end
 
@@ -48,8 +48,8 @@ module SwaggerJekyll
       dereference.properties
     end
 
-    def display_type
-      "#{@hash['$ref'].gsub('#/definitions/', '')} object"
+    def compact_type
+      "<#{ref.gsub('/definitions/', '')}>"
     end
 
     def example

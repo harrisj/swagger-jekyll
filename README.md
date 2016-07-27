@@ -139,7 +139,7 @@ Represents a single response (ie, `200`) for a verb/path in the Swagger JSON
 |Field|Definition|
 |-----|----------|
 |code|The HTTP status code for this response|
-|display_type|A compact representation of the response type|
+|compact_type|A compact representation of the response type|
 |description|A description of the response if provided. This can be passed to Jekyll's `markdownify` filter if in markdown.|
 
 ## Schema
@@ -154,7 +154,7 @@ references to other schemas.
 |name|The name of the schema if provided as a key within the `definitions` hash|
 |title|The title of the schema object from a `title` field|
 |description|A description of the Schema object if provided|
-|display_type|A compact representation of the schema for use in property/response tables|
+|compact_type|A compact representation of the schema for use in property/response tables|
 |example|A sample value for the schema. This might not be provided for all Schema types|
 |properties|A list of Schema objects that are specified as properties for this schema.|
 

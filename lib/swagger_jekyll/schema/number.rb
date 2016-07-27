@@ -2,7 +2,7 @@ require_relative '../schema'
 
 module SwaggerJekyll
   class Schema::Number < SwaggerJekyll::Schema
-    def display_type
+    def compact_type
       out = type
 
       if has_min? && has_max?

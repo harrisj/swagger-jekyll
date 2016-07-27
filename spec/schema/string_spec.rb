@@ -1,15 +1,15 @@
 require 'spec_helper'
 
 describe SwaggerJekyll::Schema::String do
-  describe 'display_type' do
+  describe 'compact_type' do
     it 'should return string' do
       s = SwaggerJekyll::Schema::String.new('foo', {'type' => 'string'}, nil)
-      expect(s.display_type).to eq('string')
+      expect(s.compact_type).to eq('string')
     end
 
     it 'should append the format if specified' do
       s = SwaggerJekyll::Schema::String.new('foo', {'type' => 'string', 'format' => 'email'}, nil)
-      expect(s.display_type).to eq('string (email)')
+      expect(s.compact_type).to eq('string (email)')
     end
   end
 

@@ -21,10 +21,10 @@ describe SwaggerJekyll::Schema::Object do
     end
   end
 
-  describe '#display_type' do
+  describe '#compact_type' do
     context 'when an object has no properties' do
       it 'should display the object name' do
-        expect(object.display_type).to eq('<Name object>')
+        expect(object.compact_type).to eq('<Name object>')
       end
     end
 
@@ -34,7 +34,7 @@ describe SwaggerJekyll::Schema::Object do
                                                                   "bar" => {"type" => "integer"}}})}
 
       it 'should display them inline within braces' do
-        expect(object.display_type).to eq('<Name {"foo": string, "bar": integer}>')
+        expect(object.compact_type).to eq('<Name {"foo": string, "bar": integer}>')
       end
     end
 
@@ -45,7 +45,7 @@ describe SwaggerJekyll::Schema::Object do
                                                                   "baz" => {"type" => "string"}}})}
 
       it 'should just display the name' do
-        expect(object.display_type).to eq('<Name object>')
+        expect(object.compact_type).to eq('<Name object>')
       end
     end
   end

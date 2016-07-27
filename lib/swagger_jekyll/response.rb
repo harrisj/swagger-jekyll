@@ -7,12 +7,12 @@ module SwaggerJekyll
     def to_liquid
       hash.dup.merge(
         'code' => code,
-        'display_type' => response_type.display_type
+        'compact_type' => compact_type
       )
     end
 
-    def display_type
-      response_type.display_type
+    def compact_type
+      response_type.compact_type
     end
 
     def response_type

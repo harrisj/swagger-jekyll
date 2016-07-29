@@ -32,6 +32,15 @@ module SwaggerJekyll
       responses_hash.values
     end
 
+    # FIXME: Move to module mixin
+    def method_missing(method_sym, *arguments, &block)
+      if @hash.key?(method_sym.to_s)
+        @hash[method_sym.to_s]
+      else
+        super
+      end
+    end
+
     private
 
     def responses_hash

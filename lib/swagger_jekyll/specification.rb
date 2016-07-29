@@ -1,3 +1,5 @@
+require 'open-uri'
+
 module SwaggerJekyll
   class Specification
     attr_accessor :json
@@ -14,10 +16,14 @@ module SwaggerJekyll
 
     def to_liquid
       {
-        'base_path' => @json['basePath'],
+        'base_path' => base_path,
         'paths' => paths,
         'definitions' => definitions
       }
+    end
+
+    def base_path
+      @json['basePath']
     end
 
     def paths

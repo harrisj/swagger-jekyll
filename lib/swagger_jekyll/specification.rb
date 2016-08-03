@@ -17,13 +17,27 @@ module SwaggerJekyll
     def to_liquid
       {
         'base_path' => base_path,
+        'swagger_version' => swagger_version,
         'paths' => paths,
-        'definitions' => definitions
+        'definitions' => definitions,
+        'info' => info
       }
+    end
+
+    def swagger_version
+      @json['swagger']
     end
 
     def base_path
       @json['basePath']
+    end
+
+    def security
+      @json['security']
+    end
+
+    def info
+      Info.new(@json['info'])
     end
 
     def paths

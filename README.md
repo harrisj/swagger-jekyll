@@ -28,23 +28,14 @@ and pardon all the dust.
 
 # Install
 
-The best way to install this is to add it to a Bundler Gemfile for your Jekyll.
+You should install the gem directly from Github by adding this to your `Gemfile`:
 
 ``` ruby
 group :jekyll_plugins do
-  gem 'swagger_jekyll'
+  gem 'swagger_jekyll', github: "harrisj/swagger-jekyll", branch: "master"
 end
 ```
-
-Then run `bundle install` to install the gem and its dependency. For
-the immediate term, you might need to actually install the gem
-directly from Github (this is also how to get the latest version)
-
-``` ruby
-group :jekyll_plugins do
-  gem 'swagger_jekyll', github: "harrisj/swagger_jekyll", branch: "master"
-end
-```
+Then run `bundle install` to install the gem and its dependency.
 
 # Configure
 
